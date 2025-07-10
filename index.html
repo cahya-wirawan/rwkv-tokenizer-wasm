@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RWKV Tokenizer</title>
+    <!-- Tailwind CSS CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="/src/style.css" rel="stylesheet">
+    <script type="module" src="/src/main.js"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+    <div class="container bg-white p-8 rounded-xl shadow-lg space-y-6">
+        <h1 class="text-3xl font-bold text-center text-gray-800">RWKV Tokenizer</h1>
+        <h3 class="text-center text-gray-800">Running as WebAssembly in the browser</h3>
+
+        <!-- Input Text Area -->
+        <div>
+            <label for="inputText" class="block text-gray-700 text-lg font-medium mb-2">
+                Enter your text here:
+                <span id="inputLength" class="text-sm text-gray-500 ml-2">(0 characters)</span>
+            </label>
+            <textarea
+                id="inputText"
+                class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition duration-200 ease-in-out text-gray-800"
+                placeholder="Type something..."
+            ></textarea>
+        </div>
+
+        <!-- Output Text Area -->
+        <div>
+            <label for="outputText" class="block text-gray-700 text-lg font-medium mb-2">
+                Token Ids:
+                <span id="outputLength" class="text-sm text-gray-500 ml-2">(0 tokens)</span>
+            </label>
+            <textarea
+                id="outputText"
+                class="w-full p-4 border border-gray-300 rounded-lg bg-gray-50 cursor-not-allowed text-gray-700"
+                readonly
+                placeholder="Token Ids will appear here..."
+            ></textarea>
+        </div>
+    </div>
+
+    <footer class="w-full text-center py-4 text-gray-600">
+        <p>&copy; 2025 Created by <a href="https://github.com/cahya-wirawan/rwkv-tokenizer" target="_blank" class="text-blue-600 hover:underline">Cahya Wirawan</a></p>
+    </footer>
+
+    <script>
+        // Get references to the input and output text areas
+        const inputText = document.getElementById('inputText');
+        const outputText = document.getElementById('outputText');
+        // Get references to the length display spans
+        const inputLengthSpan = document.getElementById('inputLength');
+        const outputLengthSpan = document.getElementById('outputLength');
+
+        // Add an event listener to the input text area
+        // The 'input' event fires whenever the value of an <input>, <select>, or <textarea> element has been changed.
+        inputText.addEventListener('input', () => {
+            // Get the current value from the input text area
+            const inputValue = inputText.value;
+            // Encode the input value
+            const encodedText = encodeText(inputValue);
+            // Set the token ids to the output text area
+            outputText.value = encodedText.join(', ');
+            updateCharacterCount(inputText, inputLengthSpan);
+            updateTokenCount(outputText, outputLengthSpan);
+        });
+    </script>
+</body>
+</html>
