@@ -30,15 +30,30 @@
         <!-- Output Text Area -->
         <div>
             <label for="outputText" class="block text-gray-700 text-lg font-medium mb-2">
-                Token Ids:
+                Results:
                 <span id="outputLength" class="text-sm text-gray-500 ml-2">(0 tokens)</span>
             </label>
-            <textarea
+            <div
                 id="outputText"
-                class="w-full p-4 border border-gray-300 rounded-lg bg-gray-50 cursor-not-allowed text-gray-700"
-                readonly
-                placeholder="Token Ids will appear here..."
-            ></textarea>
+                class="w-full p-4 border border-gray-300 rounded-lg bg-gray-50 text-gray-800 text-lg shadow-sm overflow-auto"
+                contenteditable="false"
+            >
+                <!-- Token IDs will be displayed here -->
+            </div>
+        </div>
+
+        <!-- Buttons grouped in a framed div -->
+        <div id="output-btn" class="mb-6 p-4 border border-gray-300 rounded-lg bg-gray-50 flex items-center justify-center space-x-4 shadow-sm">
+            <button id="output-text-btn"
+                class="px-6 py-3 rounded-lg border border-gray-300 text-gray-700 bg-gray-100 transition-all duration-200"
+            >
+                Text
+            </button>
+            <button id="output-token-btn"
+                class="px-6 py-3 rounded-lg border border-gray-300 text-gray-700 bg-gray-100 transition-all duration-200 focus:outline-none"
+            >
+                Token Ids
+            </button>
         </div>
     </div>
 
