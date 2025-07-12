@@ -82,18 +82,25 @@ window.updateAll = function updateAll() {
         const inputValue = inputText.value;
 
         const encodedText = encodeText(inputValue);
-        console.log("Encoded Text:", encodedText);
 
         if (isTokenMode) {            
             outputText.innerHTML = encodedText.join(', ');
         } else {
             let coloredTokens = [];
+            let elements = [];
             encodedText.forEach(element => {
-                let ch = decodeNumbers([element]);
-                console.log("Decoded Number:", [element]);
-                console.log("Decoded Character:", ch);             
-                if (!colorPalette[element]) {
-                    colorPalette[element] = getRandomColor(); // Assign a random color if not already assigned
+                let ch = '';
+                elements.push(element);
+                try {
+                    ch = decodeNumbers(elements);
+                }
+                catch (error) {
+                    // console.log("Error decoding element:", error);
+                    return;
+                }
+                elements = [];     
+                if (!colorPalette[ch]) {
+                    colorPalette[ch] = getRandomColor(); // Assign a random color if not already assigned
                 }
                 if( ch.search(/\n/) !== -1) {
                     let newCh = "";
@@ -106,7 +113,7 @@ window.updateAll = function updateAll() {
                     });
                     ch = newCh;
                 }
-                coloredTokens.push(`<span style="background-color: ${colorPalette[element]};">${ch}</span>`);
+                coloredTokens.push(`<span style="background-color: ${colorPalette[ch]};">${ch}</span>`);
             });
             outputText.innerHTML = coloredTokens.join('');
         }

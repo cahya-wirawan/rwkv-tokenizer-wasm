@@ -146,14 +146,14 @@ footer {
 #output-btn {
     padding: 0px;
     width: 224px;
-    background-color: rgb(243, 244, 246);
+    background-color: rgb(220, 220, 220);
     margin-top: 4px;
 }
 #output-text-btn {
     height: 30px;
     padding: 0px 30px; 
     margin: 0px;
-    border-color: rgb(243, 244, 246);
+    border-color: rgb(220, 220, 220);
 }
 #output-text-btn:focus {
     outline: none;
@@ -165,7 +165,7 @@ footer {
     height: 30px;
     padding: 0px 30px; 
     margin: 0px;
-    border-color: rgb(243, 244, 246);
+    border-color: rgb(220, 220, 220);
 }
 #output-token-btn:focus {
     outline: none;
@@ -173,7 +173,10 @@ footer {
 #output-token-btn:hover {
     background-color: white;
 }
-.btn-active {
+#output-btn .btn-active {
     background-color: white; /* Light gray background for active button */
     border-color: white; /* Slightly darker border for active button */
+}
+#output-btn button {
+    background-color: transparent;
 }
