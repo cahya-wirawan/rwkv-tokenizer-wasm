@@ -6,8 +6,8 @@
     <title>RWKV Tokenizer</title>
     <!-- Tailwind CSS CDN for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-  <script type="module" crossorigin src="assets/index-BDLWkUIu.js"></script>
-  <link rel="stylesheet" crossorigin href="assets/index-DiSVJGkd.css">
+  <script type="module" crossorigin src="./assets/index-DZTto730.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-BGX6GC54.css">
 </head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
     <div class="container bg-white p-8 rounded-xl shadow-lg space-y-6">
@@ -30,15 +30,30 @@
         <!-- Output Text Area -->
         <div>
             <label for="outputText" class="block text-gray-700 text-lg font-medium mb-2">
-                Token Ids:
+                Results:
                 <span id="outputLength" class="text-sm text-gray-500 ml-2">(0 tokens)</span>
             </label>
-            <textarea
+            <div
                 id="outputText"
-                class="w-full p-4 border border-gray-300 rounded-lg bg-gray-50 cursor-not-allowed text-gray-700"
-                readonly
-                placeholder="Reversed text will appear here..."
-            ></textarea>
+                class="w-full p-4 border border-gray-300 rounded-lg bg-gray-50 text-gray-800 text-lg shadow-sm overflow-auto"
+                contenteditable="false"
+            >
+                <!-- Token IDs will be displayed here -->
+            </div>
+        </div>
+
+        <!-- Buttons grouped in a framed div -->
+        <div id="output-btn" class="mb-6 p-4 border border-gray-300 rounded-lg bg-gray-50 flex items-center justify-center space-x-4 shadow-sm">
+            <button id="output-text-btn"
+                class="px-6 py-3 rounded-lg border border-gray-300 text-gray-700 transition-all duration-200"
+            >
+                Text
+            </button>
+            <button id="output-token-btn"
+                class="px-6 py-3 rounded-lg border border-gray-300 text-gray-700 transition-all duration-200"
+            >
+                Token Ids
+            </button>
         </div>
     </div>
 
@@ -47,31 +62,9 @@
     </footer>
 
     <script>
-        // Get references to the input and output text areas
-        const inputText = document.getElementById('inputText');
-        const outputText = document.getElementById('outputText');
-        // Get references to the length display spans
-        const inputLengthSpan = document.getElementById('inputLength');
-        const outputLengthSpan = document.getElementById('outputLength');
-
-        /**
-         * Reverses a given string.
-         * @param {string} str - The string to reverse.
-         * @returns {string} The reversed string.
-         */
-
-        // Add an event listener to the input text area
-        // The 'input' event fires whenever the value of an <input>, <select>, or <textarea> element has been changed.
-        inputText.addEventListener('input', () => {
-            // Get the current value from the input text area
-            const inputValue = inputText.value;
-            // Reverse the input value
-            const encodedText = encodeText(inputValue);
-            // Set the reversed value to the output text area
-            outputText.value = encodedText.join(', ');
-            updateCharacterCount(inputText, inputLengthSpan);
-            updateTokenCount(outputText, outputLengthSpan);
-        });
+        window.onload = async () => {
+            updateAll();
+        };
     </script>
 </body>
 </html>
