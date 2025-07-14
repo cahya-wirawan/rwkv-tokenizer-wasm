@@ -61,9 +61,35 @@ window.updateAll = function updateAll() {
     const outputLengthSpan = document.getElementById('outputLength');
     const textBtn = document.getElementById('output-text-btn');
     const tokenBtn = document.getElementById('output-token-btn');
+    const colorBox = document.getElementById('rounded-colorbox');
+    const colorboxClass = getColorboxClass();
     let colorPalette = {};
 
     let isTokenMode = true;
+    let isColorbox = true;
+
+    function getColorboxClass() {
+        let colorboxClass;
+        for (let i = 0; i < document.styleSheets.length; i++) {
+            const styleSheet = document.styleSheets[i];
+            try {
+                if (styleSheet.cssRules) {
+                    for (let j = 0; j < styleSheet.cssRules.length; j++)
+                    {
+                        const rule = styleSheet.cssRules[j];
+                        if (rule.selectorText === '.rounded-colorbox') {
+                            colorboxClass = rule.style;
+                            break;
+                        }
+                    }
+                }
+            }
+            catch (e) {
+                console.warn("Error accessing stylesheet rules:", e);
+            }
+        }
+        return colorboxClass;
+    }
 
     function updateButtonStates() {
         if (isTokenMode) {
@@ -72,6 +98,14 @@ window.updateAll = function updateAll() {
         } else {
             textBtn.classList.add('btn-active');
             tokenBtn.classList.remove('btn-active');
+        }
+    }
+
+    function updateColorboxStates() {
+        if (isColorbox) {
+            colorboxClass.borderRadius='0px';;
+        } else {
+            colorboxClass.borderRadius='4px';;
         }
     }
 
@@ -99,9 +133,6 @@ window.updateAll = function updateAll() {
                     return;
                 }
                 elements = [];     
-                if (!colorPalette[ch]) {
-                    colorPalette[ch] = getRandomColor(); // Assign a random color if not already assigned
-                }
                 if( ch.search(/\n/) !== -1) {
                     let newCh = "";
                     ch.split('').forEach(item => {
@@ -113,7 +144,10 @@ window.updateAll = function updateAll() {
                     });
                     ch = newCh;
                 }
-                coloredTokens.push(`<span style="background-color: ${colorPalette[ch]};">${ch}</span>`);
+                if (!colorPalette[ch]) {
+                    colorPalette[ch] = getRandomColor(); // Assign a random color if not already assigned
+                }
+                coloredTokens.push(`<span class="rounded-colorbox" style="background-color: ${colorPalette[ch]};">${ch}</span>`);
             });
             outputText.innerHTML = coloredTokens.join('');
         }
@@ -134,6 +168,11 @@ window.updateAll = function updateAll() {
         isTokenMode = true;
         updateButtonStates();
         handleInput(); // Re-process text with new mode
+    });
+
+    colorBox.addEventListener('click', () => {
+        updateColorboxStates();
+        isColorbox = isColorbox? false : true;
     });
 
     // Initial setup when the page loads

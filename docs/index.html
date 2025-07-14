@@ -6,8 +6,8 @@
     <title>RWKV Tokenizer</title>
     <!-- Tailwind CSS CDN for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-  <script type="module" crossorigin src="./assets/index-DZTto730.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-BGX6GC54.css">
+  <script type="module" crossorigin src="./assets/index-BAsP8Ikx.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-BmFaaBy9.css">
 </head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
     <div class="container bg-white p-8 rounded-xl shadow-lg space-y-6">
@@ -41,19 +41,26 @@
                 <!-- Token IDs will be displayed here -->
             </div>
         </div>
-
-        <!-- Buttons grouped in a framed div -->
-        <div id="output-btn" class="mb-6 p-4 border border-gray-300 rounded-lg bg-gray-50 flex items-center justify-center space-x-4 shadow-sm">
-            <button id="output-text-btn"
-                class="px-6 py-3 rounded-lg border border-gray-300 text-gray-700 transition-all duration-200"
-            >
-                Text
-            </button>
-            <button id="output-token-btn"
-                class="px-6 py-3 rounded-lg border border-gray-300 text-gray-700 transition-all duration-200"
-            >
-                Token Ids
-            </button>
+        <div id="btn-container">
+            <!-- Buttons grouped in a framed div -->
+            <div id="output-btn" class="mb-6 p-4 border border-gray-300 rounded-lg bg-gray-50 flex items-center justify-center space-x-4 shadow-sm">
+                <button id="output-text-btn"
+                    class="px-6 py-3 rounded-lg border border-gray-300 text-gray-700 transition-all duration-200"
+                >
+                    Text
+                </button>
+                <button id="output-token-btn"
+                    class="px-6 py-3 rounded-lg border border-gray-300 text-gray-700 transition-all duration-200"
+                >
+                    Token Ids
+                </button>
+            </div>            
+            <div id="rounded-box" class="mb-6 flex items-center justify-center">
+                <input type="checkbox" id="rounded-colorbox" class="mr-2 h-5 w-5 text-purple-600 focus:ring-purple-500 border-gray-300 rounded" checked>
+                <label for="rounded-colorbox" class="text-gray-700 text-lg">
+                    Rounded Colorbox
+                </label>
+            </div>
         </div>
     </div>
 

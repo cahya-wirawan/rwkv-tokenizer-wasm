@@ -131,23 +131,26 @@ footer {
     word-break: break-word; /* Break long words to prevent overflow */
     background-color: #f8f9fa; /* Light background for output */
     padding: 0.5rem; /* Padding for better readability */
-    border-radius: 4px; /* Rounded corners */
     min-height: 100px;
-    max-height: 300px;
-    font-size: 16px;;
+    max-height: 600px;
+    font-size: 16px;
+    resize: vertical; /* Allow vertical resizing */
 }
 #outputText span {
     padding: 0px 0px;
-    border-radius: 4px;
     margin: 2px 0px;
     display: inline-block;
-    font-size: 16px;;
+    font-size: 16px;
+}
+.rounded-colorbox {
+    border-radius: 4px;
 }
 #output-btn {
     padding: 0px;
     width: 224px;
     background-color: rgb(220, 220, 220);
     margin-top: 4px;
+    float: left;
 }
 #output-text-btn {
     height: 30px;
@@ -179,4 +182,20 @@ footer {
 }
 #output-btn button {
     background-color: transparent;
+}
+#rounded-box {
+    float: right;
+    font-size: 16px;
+    margin-top: 6px;
+}
+#rounded-box input[type="checkbox"] {
+    accent-color: lightgrey;
+    transform: scale(0.8);
+}
+#rounded-box label {
+    font-size: 16px;
+    color: #4b5563; /* Gray text for label */
+}
+#btn-container {
+    margin-top: 0.5rem; /* Space above buttons */
 }
