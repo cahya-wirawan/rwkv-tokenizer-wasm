@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RWKV Tokenizer</title>
+    <title>RWKV Tokenizer Visualization</title>
     <!-- Tailwind CSS CDN for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
   <script type="module" crossorigin src="./assets/index-BAsP8Ikx.js"></script>
@@ -11,8 +11,18 @@
 </head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
     <div class="container bg-white p-8 rounded-xl shadow-lg space-y-6">
-        <h1 class="text-3xl font-bold text-center text-gray-800">RWKV Tokenizer</h1>
-        <h3 class="text-center text-gray-800">Running as WebAssembly in the browser</h3>
+        <h1 class="text-3xl font-bold text-center text-gray-800">RWKV Tokenizer Visualization</h1>
+        <p class="text-gray-800">
+            The RWKV tokenizer is a subword-level tokenizer used across RWKV language models to convert text to integer token IDs and back. 
+            It segments text into frequently occurring sub-words or characters, mapping them to a finite vocabulary of around 50,000 tokens 
+            (in case of RWKV World Tokenizer used in RWKV 5 and newer).
+        </p>
+        <p class="text-gray-800">
+            This <a href="https://github.com/cahya-wirawan/rwkv-tokenizer-wasm" target="_blank" 
+            class="text-blue-600 hover:underline">web application</a> visualise the tokenization using the RWKV World Tokenizer. It runs entirely in the web browser thanks to 
+            the WebAssembly version of the original <a href="//github.com/cahya-wirawan/rwkv-tokenizer" target="_blank" 
+            class="text-blue-600 hover:underline">Rust RWKV Tokeniser</a>.
+        </p>
 
         <!-- Input Text Area -->
         <div>
