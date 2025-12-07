@@ -65,7 +65,7 @@ window.updateAll = function updateAll() {
     const colorboxClass = getColorboxClass();
     let colorPalette = {};
 
-    let isTokenMode = true;
+    let isTokenMode = false;
     let isColorbox = true;
 
     function getColorboxClass() {
